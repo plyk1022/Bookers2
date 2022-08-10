@@ -1,2 +1,71 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h2>User info</h2>
+
+<%= image_tag @user.get_profile_image(100, 100) %>
+<table>
+  <tbody>
+    <tr>
+      <td>name</td>
+      <td><%= @user.name %></td>
+    </tr>
+
+    <tr>
+      <td>introduction</td>
+      <td><%= @user.introduction %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to '（アイコン）編集ページ', edit_user_path(@user.id) %>
+
+
+<h2>New book</h2>
+<%= form_with model: @book do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :body, 'Opinion' %>
+  <%= f.text_area :body %>
+
+
+  <%= f.submit 'Create book' %>
+
+<% end %>
+
+
+
+<h2>Books</h2>
+
+
+
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+      </tr>
+    </thead>
+
+    <% @books.each do |book| %>
+    <tbody>
+      <tr>
+        <td><%= image_tag book.user.get_profile_image(100, 100) %></td>
+        <td>
+          <%= link_to book_path(book.id) do %> 
+            <%= book.title %>
+          <% end %>
+        </td>
+        <td><%= book.body %></td>
+        
+
+        
+      </tr>
+    </tbody>
+
+    <% end %>
+  </table>
+
+
+
+

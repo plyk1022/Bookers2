@@ -9,13 +9,23 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     @book.save
-    redirect_to books_path
+    redirect_to user_path(@book.user.id)
   end
 
   def show
+    @book = Book.new
+    @selected_book = Book.find(params[:id])
+    @user = @selected_book.user
+
   end
 
   def edit
+  end
+  
+  def destroy
+    book = Book.find(params[:id])
+    book.destroy
+    redirect_to books_path
   end
   
   
