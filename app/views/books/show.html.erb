@@ -15,7 +15,7 @@
   </tbody>
 </table>
 
-<%= link_to '（アイコン）編集ページ', edit_user_path(current_user.id) %>
+<%= link_to '（アイコン）編集ページ', edit_user_path(@user.id) %>
 
 
 <h2>New book</h2>
@@ -41,15 +41,16 @@
       <tr>
         <td>
           <%= link_to user_path(@selected_book.user.id) do %>
-            <%= image_tag @selected_book.user.get_profile_image(100, 100) %>
+            <%= image_tag @selected_book.user.get_profile_image(100, 100) %><br>
+            <%= link_to @selected_book.user.name, user_path(@selected_book.user.id) %>
           <% end %>
         </td>
         <td><%= @selected_book.title %></td>
         <td><%= @selected_book.body %></td>
         
         <% if @selected_book.user == current_user %>
-          <td><%= link_to 'Destroy', book_path(@selected_book.id), method: :delete %></td>
-        
+          <td><%= link_to 'Edit', edit_book_path(@selected_book.id) %></td>
+          <td><%= link_to 'Destroy', book_path(@selected_book.id), method: :delete, data: {confirm: "本当に消しますか？"} %></td>
         <% end %>
       </tr>
     </tbody>
