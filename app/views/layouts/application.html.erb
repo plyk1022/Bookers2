@@ -2,59 +2,90 @@
 <html>
   <head>
     <title>Bookers2</title>
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script src="https://kit.fontawesome.com/61a5e03dba.js" crossorigin="anonymous"></script>
-
+    
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
   </head>
-
+  
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-
-          <h2 class="navbar-brand"><%= link_to 'Bookers', root_path %></h2>
+        
+        <%= link_to 'Bookers', root_path, class: 'navbar-brand p-0 mb-16' %>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
           <% if user_signed_in? %>
-            <ul>
-              <li>
-                <%= link_to "Home", user_path(current_user.id) %>
+            <ul class="navbar-nav p-0 ml-auto">
+            
+              <li class="nav-item">
+                <%= link_to user_path(current_user.id), class: 'nav-link text-light' do %>
+                  <i class="fas fa-home text-light"></i> Home
+                <% end %>
               </li>
-              <li>
-                <%= link_to "Users", users_path %>
+              
+              <li class="nav-item">
+                <%= link_to user_path(current_user.id), class: 'nav-link text-light' do %>
+                  <i class="fas fa-users"></i> Users
+                <% end %>
               </li>
-              <li>
-                <%= link_to "Books", books_path %></i>
-              <li>
-                <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+              
+              <li class="nav-item">
+                <%= link_to books_path, class: 'nav-link text-light' do %>
+                  <i class="fas fa-book-open"></i> Books
+                <% end %>
               </li>
+              
+              <li class="nav-item">
+                <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
+                  <i class="fas fa-sign-out-alt"></i> Log out
+                <% end %>
+              </li>
+              
           <% else %>
-              <li>
-                <%= link_to "Home", root_path %>
+              <li class="nav-item">
+                <%= link_to root_path, class: 'btn nav-link text-light' do %>
+                  <i class="fas fa-home text-light"></i> Home
+                <% end %>
               </li>
-              <li>
-                <%= link_to "About", about_path %>
+              
+              <li class="nav-item">
+                <%= link_to about_path, class: 'btn nav-link text-light' do %>
+                  <i class="fa-solid fa-link"></i> About
+                <% end %>
               </li>
-              <li>
-                <%= link_to "Sign up", new_user_registration_path %>
+              
+              <li class="nav-item">
+                <%= link_to new_user_registration_path, class: 'btn nav-link text-light' do %>
+                  <i class="fa-solid fa-user-plus"></i> Sign up
+                <% end %>
               </li>
-              <li>
-                <%= link_to "Log in", new_user_session_path %>
+              
+              <li class="nav-item">
+                <%= link_to new_user_session_path, class: 'btn nav-link text-light' do %>
+                  <i class="fa-solid fa-right-to-bracket"></i> Log in
+                <% end %>
               </li>
             </ul>
           <% end %>
-
-
         </div>
       </nav>
-  </header>
-
+    </header>
+    
+    <main>
       <p class="notice"><%= flash[:notice] %></p>
-    </body>
+    </main>
 
     <%= yield %>
 
@@ -65,7 +96,6 @@
         </div>
       </div>
     </footer>
-
-
+    
   </body>
 </html>

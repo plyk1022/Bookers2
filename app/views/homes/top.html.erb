@@ -3,21 +3,42 @@
     <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
       <h1>welcome to <i class="fas fa-book"></i>
       <strong>Bookers</strong>!!</h1>
-      
+
       <p>In <i class="fas fa-book"></i><strong>Bookers</strong>,</p>
-      
+
       <p>you can shere and exchange your opinions, inperssions, and emotions</p>
       <p>about various books!</p>
-      
+
       <div class="btn-wrapper col-10 mx-auto">
         <div class="row">
-          <button class="btn-info btn-block ">
-            <%= link_to 'Log in', new_user_session_path %>
-          </button>
-          <button class="btn-success btn-block ">
-            <%= link_to 'Sign up', new_user_registration_path %>
+            <%= link_to 'Log in', new_user_session_path, class: 'btn-info btn-sm btn-block text-center' %>
+        </div>
+        <div class="row">
+          <%= link_to 'Sign up', new_user_registration_path, class: 'btn-success btn-sm btn-block text-center mr-' %>
+        </div>
+        
+        
+        
+        
+        
+        
+        <div class="row">
+          <button class="btn-info btn-sm btn-block mb-16">
+            <%= link_to 'Log in', new_user_session_path, class: 'text-light mb-16' %>
           </button>
         </div>
+        <div class="row">
+          <%= link_to 'Sign up', new_user_registration_path, class: 'btn-success btn-sm btn-block text-center mr-' %>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
       </div>
 
     </div>

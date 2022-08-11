@@ -1,30 +1,35 @@
-<h2>User info</h2>
-
-<% if @user.errors.any? %>
-  <div class="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this book from being saved:</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 mx-auto">
+      <h2>User info</h2>
+      
+      <% if @user.errors.any? %>
+        <div class="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this book from being saved:</h2>
+            <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+        </div>
+      <% end %>
+      
+      <%= form_with model: @user do |f| %>
+      
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        
+        <%= f.label :profile_image, 'Image' %>
+        <%= f.file_field :profile_image, accept: "image/*" %>
+        
+        <%= f.label :introduction %>
+        <%= f.text_area :introduction %>
+        
+        <%= f.submit 'Update User' %>
+        
+      
+      <% end %>
+      
+    </div>
   </div>
-<% end %>
-
-<%= form_with model: @user do |f| %>
-
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  
-  <%= f.label :profile_image, 'Image' %>
-  <%= f.file_field :profile_image, accept: "image/*" %>
-  
-  <%= f.label :introduction %>
-  <%= f.text_area :introduction %>
-  
-  <%= f.submit 'Update User' %>
-  
-
-<% end %>
-  
-  
+</div>
