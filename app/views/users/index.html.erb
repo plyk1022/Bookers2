@@ -1,14 +1,11 @@
-<h2>User info</h2>
-
-<!--プロフィール表示・編集ボタン　共通レイアウト-->
-<%= render 'books/profile', user: @user %>
-
-<!--新規投稿フォーム　共通レイアウト-->
-<%= render 'books/newbook_form', book: @book %>
+<div class="row">
+<!--プロフィール・新規投稿フォーム　共通レイアウト　books/_sidebar.html.erb-->
+  <%= render 'books/sidebar', user: @user, book: @book %>
+</div>
 
 
 <h2>Users</h2>
-  <table>
+  <table class="table">
     <thead>
       <tr>
         <th>image</th>

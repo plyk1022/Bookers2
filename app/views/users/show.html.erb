@@ -1,18 +1,12 @@
-<h2>User info</h2>
+<div class="row">
 
-<!--プロフィール表示・編集ボタン　共通レイアウト-->
-<%= render 'books/profile', user: @user %>
-
-<!--ここまで-->
-
-<!--新規投稿フォーム　共通レイアウト-->
-<%= render 'books/newbook_form', book: @book %>
-<!--ここまで-->
+<!--プロフィール・新規投稿フォーム　共通レイアウト　books/_sidebar.html.erb-->
+<%= render 'books/sidebar', user: @user, book: @book %>
 
 <!--投稿一覧　共通レイアウト-->
 <%= render 'books/books_list', books: @books %>
-<!--ここまで-->
 
+</div>
 
 
 
