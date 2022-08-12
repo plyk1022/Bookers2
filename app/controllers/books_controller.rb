@@ -1,6 +1,12 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
+  before_action :specified_user, only: [:edit]
   
+  def specified_user
+    @user = Book.find(params[:id]).user
+    redirect_to books_path unless @user.id == current_user.id
+  end
+
   def index
     @book = Book.new
     @books = Book.all
