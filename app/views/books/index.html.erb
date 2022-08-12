@@ -1,21 +1,22 @@
-<div class="container px-5">
-
-<div class="row">
 
 
-  <% if @book.errors.any? %>
-    <div class="error_explanation">
-      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
-        <ul>
-          <% @book.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-    </div>
-  <% end %>
+  
   
   <div class="container px-5 px-sm-0">
+      
+      <% if @book.errors.any? %>
+        <div class="error_explanation">
+          <h3><%= pluralize(@book.errors.count, "error") %> prohibited this obj from being saved:</h3>
+          <ul>
+            <% @book.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      
     <div class="row">
+  
       <!--プロフィール・新規投稿フォーム　共通レイアウト　books/_sidebar.html.erb-->
       <%= render 'sidebar', user: @user, book: @book %>
       
@@ -24,7 +25,5 @@
     </div>
   </div>
 
-</div>
 
-</div>
 

@@ -1,11 +1,11 @@
-<div class="row">
-
-<!--プロフィール・新規投稿フォーム　共通レイアウト　books/_sidebar.html.erb-->
-<%= render 'books/sidebar', user: @user, book: @book %>
-
-<!--投稿一覧　共通レイアウト-->
-<%= render 'books/books_list', books: @books %>
-
+<div class="container">
+  <div class="row">
+    <!--プロフィール・新規投稿フォーム　共通レイアウト　books/_sidebar.html.erb-->
+    <%= render 'books/sidebar', user: @user, book: @book %>
+    
+    <!--投稿一覧　共通レイアウト-->
+    <%= render 'books/books_list', books: @books %>
+  </div>
 </div>
 
 
