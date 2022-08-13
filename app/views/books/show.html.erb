@@ -1,5 +1,32 @@
-  <%= render 'list', user: @user, book: @book,books: @books, selected_book: @selected_book %>
-
-
-
-
+<div class="container">
+  
+  <%= render 'sidebar', user: @user, book: @book %>
+  
+  <div class="col-md-8 offset-md-1">
+    <h2>Book detail</h2>
+    <table class="table table-inverse">
+      <tbody>
+        <tr>
+          <td>
+            <%= link_to user_path(@selected_book.user.id) do %>
+              <%= image_tag @selected_book.user.get_profile_image(100, 100) %><br>
+              <%= link_to @selected_book.user.name, user_path(@selected_book.user.id) %>
+            <% end %>
+          </td>
+          <td><%= @selected_book.title %></td>
+          <td><%= @selected_book.body %></td>
+          
+          <% if @selected_book.user == current_user %>
+            <td>
+              <%= link_to 'Edit', edit_book_path(@selected_book.id), class: "btn btn-sm btn-success" %>
+            </td>
+            <td>
+              <%= link_to 'Destroy', book_path(@selected_book.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-sm btn-danger" %>
+            </td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+            

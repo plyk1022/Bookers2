@@ -1,12 +1,4 @@
-<!--プロフィール・新規投稿フォーム　共通レイアウト　books/_sidebar.html.erb-->
+<div class="container px-5 px-sm-0">
+  <%= render 'books/sidebar', user: @user, book: @book %>
   <%= render 'books/list', user: @user, users: @users, book: @book %>
-
-
-<!--共通レイアウト-->
-
-
-
-<!--ここまで-->
-
-
 </div>
